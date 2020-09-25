@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"vuephotobook9ee76f10": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
