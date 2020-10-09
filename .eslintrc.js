@@ -16,5 +16,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'off',
     'space-before-function-paren': 'off',
+    'no-console': 'off',
   },
 };
