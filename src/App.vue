@@ -1,43 +1,34 @@
 <template>
-<div id="app">
-  <amplify-authenticator v-if="authState !== 'signedin'"></amplify-authenticator>
-  <div v-if="authState === 'signedin' && user">
-    <amplify-sign-out></amplify-sign-out>
-    <div>Hello, {{user.username}}</div>
-  </div>
+<div id="app" class="bg-purple-800">
+  <auth-provider @user="getUser">
+    <app-layout>
+      {{ user.username }}
+    </app-layout>
+  </auth-provider>
 </div>
 </template>
 
-<style lang="scss">
-#app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-</style>
-
 <script>
 import {
-  onAuthUIStateChange
-} from '@aws-amplify/ui-components'
+  AuthProvider,
+  AppLayout,
+} from './components';
 
 export default {
-  name: 'AuthStateApp',
-  created() {
-    onAuthUIStateChange((authState, authData) => {
-      this.authState = authState
-      this.user = authData
-    })
+  name: 'App',
+  components: {
+    AuthProvider,
+    AppLayout,
   },
   data() {
     return {
-      user: undefined,
-      authState: undefined
-    }
+      user: {},
+    };
   },
-  beforeDestroy() {
-    return onAuthUIStateChange
-  }
-}
+  methods: {
+    getUser(user) {
+      this.user = user;
+    },
+  },
+};
 </script>

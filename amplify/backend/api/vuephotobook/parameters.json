@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "vuephotobook",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authvuephotobook9ee76f10",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
